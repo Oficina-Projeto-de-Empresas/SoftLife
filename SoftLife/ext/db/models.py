@@ -7,21 +7,7 @@ class Category(db.Model):
     __tablename__ = "category"
     id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column("name", db.Unicode, unique=True)
-    
 
-
-class Store(db.Model):
-    __tablename__ = "store"
-    id = db.Column("id", db.Integer, primary_key=True)
-    name = db.Column("name", db.Unicode)
-    user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
-    category_id = db.Column(
-        "category_id", db.Integer, db.ForeignKey("category.id")
-    )
-    active = db.Column("active", db.Boolean)
-
-    user = db.relationship("User", foreign_keys=user_id)
-    category = db.relationship("Category", foreign_keys=category_id)
 
 
 class Items(db.Model):
@@ -31,10 +17,10 @@ class Items(db.Model):
     price = db.Column("price", db.Numeric, nullable=False)
     description = db.Column("description", db.String(200), nullable=False)
     image = db.Column("image", db.Unicode, nullable=False)
-    store_id = db.Column("store_id", db.Integer, db.ForeignKey("store.id"))
     available = db.Column("available", db.Boolean)
+    category_id = db.Column("category_id", db.Integer, db.ForeignKey("category.id"))
 
-    store = db.relationship("Store", foreign_keys=store_id)
+    category = db.relationship("Category", foreign_keys=category_id)
 
 
 class Order(db.Model):
@@ -43,13 +29,9 @@ class Order(db.Model):
     created_at = db.Column("created_at", db.DateTime)
     completed = db.Column("completed", db.Boolean)
     user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
-    store_id = db.Column("store_id", db.Integer, db.ForeignKey("store.id"))
-    address_id = db.Column(
-        "address_id", db.Integer, db.ForeignKey("address.id")
-    )
+    address_id = db.Column("address_id", db.Integer, db.ForeignKey("address.id"))
 
     user = db.relationship("User", foreign_keys=user_id)
-    store = db.relationship("Store", foreign_keys=store_id)
     address = db.relationship("Address", foreign_keys=address_id)
 
 
