@@ -1,0 +1,89 @@
+{% block navbar %}
+<header>
+    <div class="container-nav" id="nav-container">
+        <nav class="navbar navbar-expand-sm navbar-light">
+            <a href="#" class="navbar-brand">
+                <img id="logo" src="{{url_for('static', filename='img/logo.png')}}" alt="Herbalife Ademir e Barbára">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
+                aria-controls="navbar-links" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon">...</span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-between" id="navbar-links">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" id="home-menu" href="#">Home</a>
+                    <a class="nav-item nav-link" id="produto-menu" href="#">Produtos</a>
+                    <a class="nav-item nav-link" id="feed-menu" href="#">Feed</a>
+                </div>
+                <div class="navbar-nav dropdown">
+                    {% if current_user.is_anonymous %}
+                    <a class="nav-item nav-link dropdown-toggle" id="login-menu dropdownMenuLink" role="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Entrar</a>
+                    <div class="dropdown-menu dropdown-login mb-6 dropdown-menu-end">
+                        <!-- dropdown form login-->
+                        <form class="px-4 py-3" action="" method="post">
+                            {{ form_login.hidden_tag() }}
+                            <div class="mb-3">
+                                {{ form_login.email.label(class="form-label", for="exampleDropdownFormEmail1") }}
+                                {{ form_login.email(type="email", class="form-control", id="exampleDropdownFormEmail1",
+                                placeholder="email@example.com") }}
+                                {% for error in form_login.email.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_login.password.label(class="form-label",for="exampleDropdownFormPassword1") }}
+                                {{ form_login.password(type="password", class="form-control",
+                                id="exampleDropdownFormPassword1",
+                                placeholder="Senha") }}
+                            </div>
+                            {{ form_login.submit(class="btn btn-primary", type="submit") }}
+                        </form>
+                    </div> <!-- dropdown form login-->
+                    <a class="nav-item nav-link dropdown-toggle" id="cadastro-menu dropdownMenuLink" ole="button"
+                        data-bs-toggle="dropdown" aria-expanded="false">Cadastre-se</a>
+                    <div class="dropdown-menu dropdown-cadastro mb-6 dropdown-menu-end">
+                        <!-- dropdown form cadastro-->
+                        <form class="px-4 py-3" action="" method="post">
+                            {{ form_login.hidden_tag() }}
+                            <div class="mb-3">
+                                {{ form_registration.username.label(class="form-label", for="DropdownFormName") }}
+                                {{ form_registration.username(class="form-control", id="DropdownFormName",
+                                placeholder="Nome completo") }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_registration.cpf.label(class="form-label", for="DropdownFormcpf") }}
+                                {{ form_registration.cpf(class="form-control", id="DropdownFormcpf",
+                                placeholder="000.000.000-00") }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_registration.telefone.label(class="form-label", for="DropdownFormtelefone") }}
+                                {{ form_registration.telefone(class="form-control", id="DropdownFormtelefone",
+                                placeholder="(DDD)90000-0000") }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_registration.email.label(class="form-label", for="DropdownFormEmail1") }}
+                                {{ form_registration.email(type="email", class="form-control", id="DropdownFormEmail1",
+                                placeholder="email@example.com") }}
+                            </div>
+                            <div class="mb-3">
+                                {{ form_registration.password.label(class="form-label",
+                                for="exampleDropdownFormPassword1") }}
+                                {{ form_registration.password(type="password", class="form-control",
+                                id="exampleDropdownFormPassword1",
+                                placeholder="Password") }}
+                            </div>
+                            {{ form_registration.submit(class="btn btn-primary", type="submit") }}
+                        </form>
+                    </div> <!-- dropdown form cadastro-->
+                    {% else %}
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link" id="home-menu" href="#">Perfil</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+{% endblock %}
