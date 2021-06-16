@@ -227,3 +227,15 @@
   color: #00800099;
   text-shadow:10px 10px 9px #bdbdbd;
 }
+
+.section-feed{
+  padding: 0 0 3.5em 0;
+}
+
+.text-feed > h1{
+  font-weight: 650;
+  font-size: 2.5em;
+  line-height: 1.2em;
+  color: #00800099;
+  text-shadow:10px 10px 9px #bdbdbd;
+}

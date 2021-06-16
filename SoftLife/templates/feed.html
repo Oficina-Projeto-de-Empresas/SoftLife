@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<section class="section-feed">
+    <div class="container container-feed">
+        <div class="row">
+            <div class="col-5 d-flex flex-sm-column justify-content-center text-feed">
+                <h1>Em Desenvolvimento,</h1>
+                <h1>lançamento em breve!</h1>
+
+            </div>
+            <div class="col-7 img-top">
+                <img src="{{url_for('static', filename='img/manutencao.jpg')}}">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -11,9 +11,9 @@
             </button>
             <div class="collapse navbar-collapse justify-content-between" id="navbar-links">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" id="home-menu" href="#">Home</a>
-                    <a class="nav-item nav-link" id="produto-menu" href="#">Produtos</a>
-                    <a class="nav-item nav-link" id="feed-menu" href="#">Feed</a>
+                    <a class="nav-item nav-link" id="home-menu" href="{{ url_for('site.index') }}">Home</a>
+                    <a class="nav-item nav-link" id="produto-menu" href="{{ url_for('Produtos.products') }}">Produtos</a>
+                    <a class="nav-item nav-link" id="feed-menu" href="{{ url_for('Feed.feed') }}">Feed</a>
                 </div>
                 <div class="navbar-nav dropdown">
                     {% if current_user.is_anonymous %}
