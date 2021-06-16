@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<section class="section-404">
+    <div class="container container-404">
+        <div class="row">
+            <div class="col-5 d-flex flex-sm-column justify-content-center text-404">
+                <h1>Opsss!!!, Página Não Encontrada</h1>
+            </div>
+            <div class="col-7 img-top">
+                <img src="{{url_for('static', filename='img/404.png')}}">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

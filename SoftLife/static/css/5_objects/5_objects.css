@@ -73,7 +73,7 @@
 
 .img-top> img{
   height: 33em; 
-  width: 47.2em;
+  width: 47.4em;
 }
 
 /* Nossos Resultados */
@@ -214,4 +214,16 @@
 }
 #toolbar>span>i{
   color: #a60000;
+}
+
+.section-404{
+  padding: 0 0 3.5em 0;
+}
+
+.text-404 > h1{
+  font-weight: 700;
+  font-size: 3em;
+  line-height: 1.2em;
+  color: #00800099;
+  text-shadow:10px 10px 9px #bdbdbd;
 }
