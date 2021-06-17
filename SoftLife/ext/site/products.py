@@ -23,4 +23,10 @@ def products():
 
 @bp.route('/<int:id>', methods=['GET', 'POST'])
 def products_id(id):
-    return f"tela {id} produtos"
+    form_contact = ContactForm()
+    form_login = LoginForm()
+    form_registration = RegistrationForm()
+    return render_template('products_id.html', title='Produtos',
+                            form_contact=form_contact, 
+                            form_login=form_login, 
+                            form_registration=form_registration)

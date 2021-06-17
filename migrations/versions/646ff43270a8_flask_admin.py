@@ -1,8 +1,8 @@
-"""Implementing user base methods
+"""flask-admin
 
-Revision ID: 10fe5e5cdd86
+Revision ID: 646ff43270a8
 Revises: 
-Create Date: 2021-06-16 22:16:15.791860
+Create Date: 2021-06-17 10:07:52.544855
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '10fe5e5cdd86'
+revision = '646ff43270a8'
 down_revision = None
 branch_labels = None
 depends_on = None

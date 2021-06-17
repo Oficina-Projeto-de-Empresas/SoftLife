@@ -262,3 +262,17 @@
 .cart-button {
   width: 6em
 }
+
+.card-product-ind{
+  margin-bottom: 5rem;
+}
+
+.row-sugestoes{
+  margin-top: 5.7rem;
+  margin-bottom: 1.5rem;
+}
+
+#sugestoes{
+  font-weight: 650;
+  font-size: 1.5em;
+}
