@@ -4,5 +4,6 @@ flask-sqlalchemy
 flask-migrate
 Flask-WTF
 flask-mail
+Flask-Login
 email-validator
 dynaconf
