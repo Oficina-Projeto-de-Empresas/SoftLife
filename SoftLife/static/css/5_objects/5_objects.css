@@ -239,3 +239,26 @@
   color: #00800099;
   text-shadow:10px 10px 9px #bdbdbd;
 }
+
+.card-title{
+  font-weight: 550;
+  font-size: 1.5em;
+}
+.card-price{
+  font-weight: 530;
+  font-size: 1.2em;
+}
+
+.icon-prod{
+  color:#BDBDBD;
+  -webkit-transition: all 0.3s ease-in-out 0s;
+  transition: all 0.3s ease-in-out 0s;
+}
+
+.icon-prod:hover{
+  color:#646464;
+}
+
+.cart-button {
+  width: 6em
+}
