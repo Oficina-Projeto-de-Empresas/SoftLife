@@ -19,7 +19,7 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Cadastrar')
     
     def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
+        user = User.query.filter_by(name=username.data).first()
         if user is not None:
             raise ValidationError('Please use a different username.')
     
