@@ -1,8 +1,8 @@
-"""flask-admin
+"""changed column name password in User table
 
-Revision ID: 646ff43270a8
+Revision ID: 9fc72b614e33
 Revises: 
-Create Date: 2021-06-17 10:07:52.544855
+Create Date: 2021-06-18 12:14:34.635625
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '646ff43270a8'
+revision = '9fc72b614e33'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,7 +31,7 @@ def upgrade():
     sa.Column('cpf', sa.String(length=11), nullable=False),
     sa.Column('telephone', sa.String(length=11), nullable=True),
     sa.Column('email', sa.Unicode(), nullable=False),
-    sa.Column('passwd', sa.Unicode(), nullable=False),
+    sa.Column('password', sa.Unicode(), nullable=False),
     sa.Column('admin', sa.Boolean(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('cpf'),
