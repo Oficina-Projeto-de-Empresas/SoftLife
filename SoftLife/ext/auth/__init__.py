@@ -9,7 +9,7 @@ from SoftLife.ext.db import db
 
 def init_app(app):
     login = LoginManager(app)
-    login.login_view = 'site.login'
+    login.login_view = 'auth.login'
     login.init_app(app)
 
     @login.user_loader
