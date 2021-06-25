@@ -30,69 +30,49 @@
                 <div class="card-group row mb-3 justify-content-center d-flex align-items-center"">
             <div class=" col-md-3">
                     <div class="card text-left">
-                        <img class="card-img-top" src="{{url_for('static', filename='img/resultados1.jpg')}}"
-                            alt="Resultados">
                         <div class="card-body align-items-center">
-                            <h2 class="card-title">Fernada</h2>
-                            <p class="card-text d-flex align-items-center">
-                                <i class="bi bi-clock-history"></i>
-                                <small class="text-muted"> 60 dias</small>
-                            </p>
-                            <p class="card-text d-flex align-items-center">
-                                <img src="{{url_for('static', filename='img/fire.svg')}}" alt="">
-                                <small class="text-muted">-20kg</small>
-                            </p>
+                            <h2 class="card-title">Fernanda Lopes</h2>
+                            <img class="card-img-top" src="{{url_for('static', filename='img/resultados2.jpg')}}"
+                                alt="Resultados">
+                            <div class="MeuGrafico">
+                                <canvas id="myChart1"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card text-left">
-                        <img class="card-img-top" src="{{url_for('static', filename='img/resultados1.jpg')}}"
-                            alt="Resultados">
                         <div class="card-body">
-                            <h2 class="card-title">Amanda</h2>
-                            <p class="card-text d-flex align-items-center">
-                                <i class="bi bi-clock-history"></i>
-                                <small class="text-muted">31 dias</small>
-                            </p>
-                            <p class="card-text d-flex align-items-center">
-                                <img src="{{url_for('static', filename='img/fire.svg')}}" alt="">
-                                <small class="text-muted">-10kg</small>
-                            </p>
+                            <h2 class="card-title">Amanda Oliveira</h2>
+                            <img class="card-img-top" src="{{url_for('static', filename='img/resultados1.jpg')}}"
+                            alt="Resultados">
+                            <div class="MeuGrafico">
+                                <canvas id="myChart2"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card text-left">
-                        <img class="card-img-top" src="{{url_for('static', filename='img/resultados2.jpg')}}"
-                            alt="Resultados">
                         <div class="card-body">
-                            <h2 class="card-title">Cecília</h2>
-                            <p class="card-text d-flex align-items-center">
-                                <i class="bi bi-clock-history"></i>
-                                <small class="text-muted">40 dias</small>
-                            </p>
-                            <p class="card-text d-flex align-items-center">
-                                <img src="{{url_for('static', filename='img/fire.svg')}}" alt="">
-                                <small class="text-muted">-13kg</small>
-                            </p>
+                            <h2 class="card-title">Cecília Barbosa</h2>
+                            <img class="card-img-top" src="{{url_for('static', filename='img/resultados2.jpg')}}"
+                            alt="Resultados">
+                            <div class="MeuGrafico">
+                                <canvas id="myChart3"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card text-left">
-                        <img class="card-img-top" src="{{url_for('static', filename='img/resultados2.jpg')}}"
-                            alt="Resultados">
                         <div class="card-body">
-                            <h2 class="card-title">Cecília</h2>
-                            <p class="card-text d-flex align-items-center">
-                                <i class="bi bi-clock-history"></i>
-                                <small class="text-muted">40 dias</small>
-                            </p>
-                            <p class="card-text d-flex align-items-center">
-                                <img src="{{url_for('static', filename='img/fire.svg')}}" alt="">
-                                <small class="text-muted">-13kg</small>
-                            </p>
+                            <h2 class="card-title">Olivia Ferreira</h2>
+                            <img class="card-img-top" src="{{url_for('static', filename='img/resultados3.jpg')}}"
+                            alt="Resultados">
+                            <div class="MeuGrafico">
+                                <canvas id="myChart4"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,5 +147,46 @@
             </div><!-- /.row -->
         </section>
     </div>
+    <script>
+        for (var i = 1; i <= 4; i++) {
+            var ctx = document.getElementById('myChart'+i);
+            var myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Mar', 'Abr', 'Mai'],
+                    datasets: [{
+                        label: '# Perda de Peso - Kg',
+                        data: [i, 10+i+i, 15-i-i],
+                        tension: 0.5,
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                            'rgba(255, 206, 86, 0.2)',
+                            'rgba(75, 192, 192, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    indexAxis: 'x',
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    </script>
 </main>
 {% endblock %}
