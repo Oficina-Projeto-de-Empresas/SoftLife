@@ -18,103 +18,21 @@
 <section class="section-feed">
     <div class="container container-feed">
         <div class="card-group">
-            <div class="card align-items-center" style="width: 17rem; height: auto;">
-                <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Shake Herbalife</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-price">R$ 40,00</h5>
-                    <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                    <a href="/produtos/1" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+            <div class="row row-cols-4 g-4">
+                {% for product in products %}
+                <div class="card align-items-center col" style="width: 17rem; height: auto;">
+                    <img src="{{ url_for('static', filename='img/products/' + product.image) }}" class="card-img-top w-50 h-40 py-3" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.description }}</p>
+                        <h5 class="card-price">{{ product.price }}</h5>
+                        <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
+                        <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                    </div>
                 </div>
-            </div>
-
-            <div class="card align-items-center" style="width: 17rem; height: auto;">
-                <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Shake Herbalife</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-price">R$ 40,00</h5>
-                    <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                    <a href="/produtos/1" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                </div>
-            </div>
-
-            <div class="card align-items-center" style="width: 17rem; height: auto;">
-                <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Shake Herbalife</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-price">R$ 40,00</h5>
-                    <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                    <a href="/produtos/1" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                </div>
-            </div>
-
-            <div class="card align-items-center" style="width: 17rem; height: auto;">
-                <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Shake Herbalife</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-price">R$ 40,00</h5>
-                    <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                    <a href="/produtos/1" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                </div>
+                {% endfor %}
             </div>
         </div>
-
-        <div class="card-group py-3">
-            <div class="card align-items-center" style="width: 17rem; height: auto;">
-                <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Shake Herbalife</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-price">R$ 40,00</h5>
-                    <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                    <a href="/produtos/1" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                </div>
-            </div>
-
-            <div class="card align-items-center" style="width: 17rem; height: auto;">
-                <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Shake Herbalife</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-price">R$ 40,00</h5>
-                    <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                    <a href="/produtos/1" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                </div>
-            </div>
-
-            <div class="card align-items-center" style="width: 17rem; height: auto;">
-                <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Shake Herbalife</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-price">R$ 40,00</h5>
-                    <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                    <a href="/produtos/1" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                </div>
-            </div>
-
-            <div class="card align-items-center" style="width: 17rem; height: auto;">
-                <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Shake Herbalife</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                        card's content.</p>
-                    <h5 class="card-price">R$ 40,00</h5>
-                    <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                    <a href="/produtos/1" class="btn btn-primary"><i class="bi bi-eye"></i></a>
-                </div>
-            </div>
         </div>
 </section>
 {% endblock %}
