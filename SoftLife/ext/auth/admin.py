@@ -8,32 +8,8 @@ from SoftLife.ext.db import db
 
 
 class UserAdmin(ModelView):
-    """Interface admin de user"""
 
-    def format_user(self, request, user, *args):
-         return user.email.split("@")[0]
-
-    def format_cpf(self, request, user, *args):
-        teste = user.cpf.zfill(11)
-        cpf = '{}.{}.{}-{}'.format(
-                            teste[:3], teste[3:6], 
-                            teste[6:9], teste[9:])
-        return cpf
-
-    def format_telephone(self, request, user, *args):
-        tel = user.telephone.zfill(11)
-        telephone = '({}){}-{}'.format(tel[:2], tel[2:7],tel[7:] )
-        return telephone
-    
-
-    column_formatters = {
-        "email": format_user,
-        "cpf": format_cpf,
-        "telephone": format_telephone
-     }
-
-
-
+    column_list = ('name', 'cpf', 'telephone', 'email')
 
     column_searchable_list = ["email"]
 
