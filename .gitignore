@@ -1,3 +1,5 @@
 .venv
 .vscode
 *.pyc
+*.db
+SoftLife/static/img/products
