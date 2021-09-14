@@ -8,6 +8,8 @@ class Category(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column("name", db.Unicode, unique=True)
 
+    def __repr__(self):
+        return self.name
 
 
 class Items(db.Model):
@@ -21,6 +23,9 @@ class Items(db.Model):
     category_id = db.Column("category_id", db.Integer, db.ForeignKey("category.id"))
 
     category = db.relationship("Category", foreign_keys=category_id)
+
+'''    def __repr__(self):
+        return '<Items %r>' % (self.id)'''
 
 
 class Order(db.Model):
