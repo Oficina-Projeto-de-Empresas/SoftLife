@@ -7,3 +7,4 @@ flask-mail
 Flask-Login
 email-validator
 dynaconf
+Pillow
