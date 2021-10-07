@@ -1,5 +1,6 @@
 # -*- encoding: utf-8 -*-
 
+from sqlalchemy import text
 from SoftLife.ext.db import db
 
 
@@ -8,6 +9,8 @@ class Category(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column("name", db.Unicode, unique=True)
 
+    def __repr__(self):
+        return self.name
 
 
 class Items(db.Model):
@@ -15,12 +18,16 @@ class Items(db.Model):
     id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column("name", db.Unicode, nullable=False)
     price = db.Column("price", db.Numeric, nullable=False)
+    quantity = db.Column("quantity", db.Integer, nullable=False, server_default=text("0"))
     description = db.Column("description", db.String(200), nullable=False)
     image = db.Column("image", db.Unicode, nullable=False)
     available = db.Column("available", db.Boolean)
     category_id = db.Column("category_id", db.Integer, db.ForeignKey("category.id"))
 
     category = db.relationship("Category", foreign_keys=category_id)
+
+'''    def __repr__(self):
+        return '<Items %r>' % (self.id)'''
 
 
 class Order(db.Model):

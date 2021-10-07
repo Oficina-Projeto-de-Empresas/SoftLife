@@ -35,4 +35,12 @@
         </div>
         </div>
 </section>
+
+<script>
+    var productsPrices = document.getElementsByClassName("card-price");
+    for (var produtPrice of productsPrices) {
+	    var num = parseFloat(produtPrice.innerHTML);
+	    produtPrice.innerHTML = num.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    }
+</script>
 {% endblock %}

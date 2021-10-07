@@ -1,5 +1,6 @@
 import os
 import os.path as op
+import locale
 
 from flask import Markup, url_for
 from flask_admin import Admin, form
@@ -23,9 +24,6 @@ def init_app(app):
     admin.template_mode = app.config.get("ADMIN_TEMPLATE_MODE", "bootstrap4")
     admin.init_app(app)
 
-    # TODO: Proteger com senha
-    # TODO: traduzir para PTBR
-
     admin.add_view(ModelView(Address, db.session))
 
     admin.add_view(ItemsAdmin(Items, db.session))
@@ -37,6 +35,12 @@ def init_app(app):
     admin.add_view(ModelView(Checkout, db.session))
 
 class ItemsAdmin(ModelView):
+
+    def format_price(self, request, items, *args):
+        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        price = locale.currency(items.price, grouping=True, symbol=None)
+        return f'R$ {price}'
+    
     def _list_thumbnail(view, context, model, name):
         if not model.image:
             return ''
@@ -48,6 +52,7 @@ class ItemsAdmin(ModelView):
         )
 
     column_formatters = {
+        "price": format_price,
         "image": _list_thumbnail
     }
 
@@ -55,5 +60,3 @@ class ItemsAdmin(ModelView):
         "image": form.ImageUploadField(
             'Image', base_path=file_path, thumbnail_size=(100, 100, True))
     }
-    
-    edit_template = 'edit_items.html'
