@@ -22,8 +22,16 @@ a:hover {
     text-decoration: none !important;
 }
 
+.navbar{
+    padding: 7px 45px;
+}
+
+.navbar > .navbar-brand > img{
+    width: 80px;
+}
+
 .content {
-    padding: 5rem 0 2rem 0;
+    padding: .5rem 0 2rem 0;
 }
 
 h2 {

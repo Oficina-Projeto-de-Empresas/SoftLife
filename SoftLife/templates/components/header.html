@@ -2,7 +2,7 @@
 <header>
     <div class="container-nav" id="nav-container">
         <nav class="navbar navbar-expand-sm navbar-light">
-            <a href="#" class="navbar-brand">
+            <a href="{{ url_for('site.index') }}" class="navbar-brand">
                 <img id="logo" src="{{url_for('static', filename='img/logo.png')}}" alt="Herbalife Ademir e Barbára">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-links"
