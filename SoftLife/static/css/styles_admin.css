@@ -1,0 +1,15 @@
+.mb-2{
+    color: #00800099;
+    font-weight: bolder;
+}
+
+.flex-grow-1{
+    padding-right: 10px;
+    border-color: #00800099;
+}
+
+.bi{
+    color: #00800099;
+    width: 50px;
+    height: auto;
+}
