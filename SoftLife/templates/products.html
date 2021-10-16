@@ -17,30 +17,23 @@
 </div>
 <section class="section-feed">
     <div class="container container-feed">
-        <div class="card-group">
-            <div class="row row-cols-4 g-4">
+        <div class="card-group"style="width: 73rem;">
+            <div class="row row-cols-2 row-cols-md-4 g-2">
                 {% for product in products %}
-                <div class="card align-items-center col" style="width: 17rem; height: auto;">
-                    <img src="{{ url_for('static', filename='img/products/' + product.image) }}" class="card-img-top w-50 h-40 py-3" alt="...">
+                <div class="card align-items-center" style="width: 14.5rem; height: 23.5rem;">
+                    <img src="{{ url_for('static', filename='img/products/' + product.image) }}" class="card-img-top w-80 h-80 py-10" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">{{ product.name }}</h5>
-                        <p class="card-text">{{ product.description }}</p>
-                        <h5 class="card-price">{{ product.price }}</h5>
+                        <h5 class="card-title"style="width: 13rem; height:55px">{{ product.name }}</h5>
+                        <h5 class="card-price" style="width: 10rem; height: 30px">{{ product.price }}</h5>
                         <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                        <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"><i class="bi bi-eye"></i></a>
+                        <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"style="width: 6rem; height: 2.4rem"><i class="bi bi-eye"></i></a>
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </div>
-        </div>
+    </div>        
 </section>
 
-<script>
-    var productsPrices = document.getElementsByClassName("card-price");
-    for (var produtPrice of productsPrices) {
-	    var num = parseFloat(produtPrice.innerHTML);
-	    produtPrice.innerHTML = num.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    }
-</script>
 {% endblock %}
+
