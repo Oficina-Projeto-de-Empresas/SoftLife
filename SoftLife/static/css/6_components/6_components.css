@@ -10,10 +10,6 @@
     padding: 0 0 5rem 0 ; /* separando carrosel das outras sessoes */
 }
 
-.card{
-    height: 24rem; /*definindo tamanho do card de resultados*/
-}
-
 .section-result{
     background-color: #fff8f0be;
 }
@@ -21,8 +17,3 @@
 .section-beneficios{
     background-color:#f0fdffab;
 }
-
-.MeuGrafico{
-    width: 200px;
-}
-
