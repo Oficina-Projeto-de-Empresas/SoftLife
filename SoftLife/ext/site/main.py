@@ -8,8 +8,7 @@ from SoftLife.ext.auth import User
 from SoftLife.forms.form_contact import ContactForm
 from SoftLife.forms.form_auth_user import LoginForm, RegistrationForm
 
-from ..mail import Message, mail
-
+from ..mail import send_message
 
 bp = Blueprint('site', __name__)
 
@@ -27,10 +26,3 @@ def index():
                             form_login = form_login,
                             form_registration = form_registration,
                             form_contact=form_contact)
-
-def send_message(message):
-    msg = Message(message.get('subject'), sender = message.get('email'),
-            recipients = ['vinicius.tertuliano@aluno.faculdadeimpacta.com.br'],
-            body= message.get('message')
-    )  
-    mail.send(msg)
