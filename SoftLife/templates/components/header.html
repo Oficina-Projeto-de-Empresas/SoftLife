@@ -20,10 +20,12 @@
                     <a class="nav-item nav-link" id="login-menu" role="button" aria-expanded="false" href="{{ url_for('auth.login') }}">Entrar</a>
                     <a class="nav-item nav-link" id="cadastro-menu" role="button" aria-expanded="false"href="{{ url_for('auth.register') }}">Cadastre-se</a>
                     {% else %}
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link" id="home-menu" href="#">Perfil</a>
-                        <a class="nav-item nav-link" id="home-menu" href="{{ url_for('auth.logout') }}">Sair</a>
-                    </div>
+                        <a class="nav-item nav-link dropdown-toggle" href="#" role="button" id="perfil-menu dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{ url_for('usuario.personal_info', id=current_user.id) }}">Meus dados</a></li>
+                        </ul>
+                        <a class="nav-item nav-link" id="sair-menu" href="{{ url_for('auth.logout') }}">Sair</a>
                     {% endif %}
                 </div>
             </div>
