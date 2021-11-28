@@ -4,6 +4,7 @@ from .main import bp as main_bp
 from .auth import bp as auth_bp
 from .products import bp as products_bp
 from .feed import bp as feed_bp
+from .user import bp as user_bp
 from SoftLife.forms.form_contact import ContactForm
 from SoftLife.forms.form_auth_user import LoginForm, RegistrationForm
 
@@ -12,6 +13,7 @@ def init_app(app):
     app.register_blueprint(auth_bp)
     app.register_blueprint(products_bp, url_prefix='/produtos')
     app.register_blueprint(feed_bp, url_prefix='/feed')
+    app.register_blueprint(user_bp, url_prefix='/usuario')
 
     @app.errorhandler(404)
     def not_found(e):

@@ -276,3 +276,25 @@
   font-weight: 650;
   font-size: 1.5em;
 }
+
+/* tela personal-info */
+
+.form-personal-info > form > div > div > .form-label{
+  color: #0000008c;
+}
+
+.title-personal-info{
+  color: #00800099; 
+  margin-bottom: 1em; 
+  font-size: 1.3em; 
+  font-weight: 700; 
+} 
+
+#btn-personal-info{
+  height: 3em;
+}
+
+#btn-personal-info > input{
+  font-size: 1.3em;
+  font-weight: 700;
+}

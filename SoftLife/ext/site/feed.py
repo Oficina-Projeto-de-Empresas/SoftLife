@@ -2,7 +2,6 @@ from flask import Blueprint, render_template, redirect, url_for, request, flash
 
 from SoftLife.ext.db import db
 from SoftLife.forms.form_contact import ContactForm
-from SoftLife.forms.form_auth_user import LoginForm, RegistrationForm
 
 from ..mail import send_message
 

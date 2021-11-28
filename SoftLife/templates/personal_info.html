@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% block app_content %}
+<section class="section-feed">
+    <div class="container container-personal-info">
+        <div class="row grid-divider">
+            <form class="row grid-divider" action="#" method="post">
+                {{ form_persona_information.hidden_tag() }}
+                <div class="col">
+                    <div class="row">
+                        <h1 class="title-personal-info">Dados Pessoais</h1>
+                        <div class="d-flex justify-content-center align-items-center form-group row form-personal-info">
+                            <div class="row">
+                                <div class="mb-3">
+                                    {{ form_persona_information.name.label(class="form-label") }}
+                                    {{ form_persona_information.name(class="form-control", id="name", type="text") }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3">
+                                    {{ form_persona_information.cpf.label(class="form-label") }}
+                                    {{ form_persona_information.cpf(type="text", class="form-control", id="cpf", onkeypress="$(this).mask('000.000.000-00');") }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3">
+                                    {{ form_persona_information.email.label(class="form-label") }}
+                                    {{ form_persona_information.email(class="form-control", id="email", type="text") }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3">
+                                    {{ form_persona_information.telephone.label(class="form-label") }}
+                                    {{ form_persona_information.telephone(type="text", class="form-control", id="telephone", onkeypress="$(this).mask('(00)00000-0000');") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row">
+                        <h1 class="title-personal-info">Endereço</h1>
+                        <div class="d-flex justify-content-center align-items-center form-group row form-personal-info">
+                            <div class="row">
+                                <div class="mb-3">
+                                    {{ form_persona_information.address.label(class="form-label") }}
+                                    {{ form_persona_information.address(type="text", class="form-control", id="street") }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    {{ form_persona_information.number.label(class="form-label") }}
+                                    {{ form_persona_information.number(type="text", class="form-control", id="number") }}
+                                </div>
+                                <div class="col-md-5 mb-3">
+                                    {{ form_persona_information.complement.label(class="form-label") }}
+                                    {{ form_persona_information.complement(type="text", class="form-control", id="complement") }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    {{ form_persona_information.zip.label(class="form-label") }}
+                                    {{ form_persona_information.zip(type="text", class="form-control", id="zip") }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    {{ form_persona_information.neighborhood.label(class="form-label") }}
+                                    {{ form_persona_information.neighborhood(type="text", class="form-control", id="neighborhood") }}
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    {{ form_persona_information.city.label(class="form-label") }}
+                                    {{ form_persona_information.city(type="text", class="form-control", id="city") }}
+                                </div>
+                                <div class="col-md-2 mb-3">
+                                    {{ form_persona_information.state.label(class="form-label") }}
+                                    {{ form_persona_information.state(type="text", class="form-control", id="state") }}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3">
+                                    {{ form_persona_information.reference_point.label(class="form-label") }}
+                                    {{ form_persona_information.reference_point(type="text", class="form-control", id="referencePoint") }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end " id="btn-personal-info">
+                    {{ form_persona_information.submit(class="btn btn-success col-2", id="submit", type="submit", value="Enviar") }}
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.0.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script type="text/javascript">
+    $("#zip").blur(function(){
+        var zip = this.value.replace(/[^0-9]/, "");
+        if(zip.length != 8){
+					return false;
+				}
+        var url = "https://viacep.com.br/ws/"+zip+"/json/";
+        $.getJSON(url, function(dadosRetorno){
+					try{
+						// Preenche os campos de acordo com o retorno da pesquisa
+						$("#street").val(dadosRetorno.logradouro);
+						$("#neighborhood").val(dadosRetorno.bairro);
+						$("#city").val(dadosRetorno.localidade);
+						$("#state").val(dadosRetorno.uf);
+					}catch(ex){}
+				});
+			});
+</script>
+{% endblock %}

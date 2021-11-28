@@ -69,8 +69,13 @@ class Address(db.Model):
     __tablename__ = "address"
     id = db.Column("id", db.Integer, primary_key=True)
     zip = db.Column("zip", db.Unicode)
-    country = db.Column("country", db.Unicode)
     address = db.Column("address", db.Unicode)
+    number = db.Column("number", db.String(5))
+    neighborhood = db.Column("neighborhood", db.String(30))
+    complement = db.Column("complement", db.String(100))
+    city = db.Column("city", db.String(100))
+    state = db.Column("state", db.String(120))
+    reference_point = db.Column("reference_point", db.String(200))
     user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
 
     user = db.relationship("User", foreign_keys=user_id)
