@@ -1,0 +1,95 @@
+{% extends 'admin/master.html' %}
+
+{% block head_css %}
+{{ super() }}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles_admin.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+<div class="card-body justify-content-between">
+    <div class="d-flex align-items-start shadow-lg p-3 mb-5 bg-white rounded">
+
+        <div class="flex-grow-1">
+            <p class="mb-2">Total Vendidos</p>
+            <h3 class="mb-2">R$ 24.300
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cash"
+                    viewBox="0 0 16 16">
+                    <path d="M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" />
+                    <path
+                        d="M0 4a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V4zm3 0a2 2 0 0 1-2 2v4a2 2 0 0 1 2 2h10a2 2 0 0 1 2-2V6a2 2 0 0 1-2-2H3z" />
+                </svg>
+            </h3>
+
+        </div>
+        <div class="flex-grow-1">
+            <p class="mb-2">Novas Ordens</p>
+            <h3 class="mb-2">3.000
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-cart-check" viewBox="0 0 16 16">
+                    <path
+                        d="M11.354 6.354a.5.5 0 0 0-.708-.708L8 8.293 6.854 7.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
+                    <path
+                        d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                </svg>
+            </h3>
+
+        </div>
+        <div class="flex-grow-1">
+            <p class="mb-2">Visitantes</p>
+            <h3 class="mb-2">5.000
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-people-fill" viewBox="0 0 16 16">
+                    <path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
+                    <path fill-rule="evenodd"
+                        d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" />
+                    <path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z" />
+                </svg>
+            </h3>
+        </div>
+        <div class="flex-grow-1">
+            <p class="mb-2">Troca pendentes</p>
+            <h3 class="mb-2">2
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                    <path
+                        d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z" />
+                    <path fill-rule="evenodd"
+                        d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z" />
+                </svg>
+            </h3>
+        </div>
+    </div>
+    <div class="container py-3 text-center mb-2">
+        <div class="row">
+            <div class="col">Grafico 1</div>
+            <div class="col">Grafico 2</div>
+        </div>
+    </div>
+    <div class="container py-3 text-center shadow-lg">
+        <div class="row mb-2">
+            <div class="col title-col">Controle de estoque</div>
+            <div class="w-100"></div>
+            <div class="col">ID</div>
+            <div class="col">Descrição</div>
+            <div class="col">Quantidade</div>
+
+            <div class="w-100"></div>
+
+            <div class="col">01</div>
+            <div class="col">Pó Shake Morango</div>
+            <div class="col">15</div>
+
+            <div class="w-100"></div>
+
+            <div class="col">02</div>
+            <div class="col">Pó Shake Chocolate</div>
+            <div class="col">09</div>
+        </div>
+        <button type="button" class="btn btn-primary">Ver</button>
+    </div>
+
+</div>
+
+{% endblock %}
