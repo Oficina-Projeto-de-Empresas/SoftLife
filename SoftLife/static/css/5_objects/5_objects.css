@@ -298,3 +298,170 @@
   font-size: 1.3em;
   font-weight: 700;
 }
+
+/* tela carrinho */
+
+.section-cart {
+  padding: 1.4rem 0 1.4rem 0;
+}
+
+.div-cart > .div-title > .title-cart{
+  color: #008523;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+/* Chrome, Safari, Edge, Opera */
+.div-cart > .items-cart > .div-input > input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  font-size: 1.7em;
+  text-align: center;
+}
+
+/* Firefox */
+.div-cart > .items-cart > .div-input > input[type=number] {
+  -moz-appearance: textfield;
+  font-size: 1.7em;
+  text-align: center;
+}
+
+.div-cart > .items-cart > .div-input > button > i{
+  color: #008523;
+}
+
+.div-cart > .items-cart > div > .card-price{
+  font-size: 1.3em;
+}
+
+.div-cart > .items-cart > div > .trash{
+  background-color: #FFF;
+  border-color: #FFF;
+}
+
+.div-cart > .items-cart > div > .trash > i{
+  color: #818181;
+  -webkit-transition: all 0.6s ease-in-out 0s;
+  transition: all 0.6s ease-in-out 0s;
+}
+
+.div-cart > .items-cart > div > .trash > i:hover{
+  color: #a60000;
+}
+
+.div-cart > .div-subtotal{
+  background-color: #008523;
+  height: 9em;
+  border-radius: 10px;
+}
+
+.div-cart > .div-subtotal > div > a {
+  font-size: 1.5em;
+  font-weight: 500;
+  text-decoration: none;
+  color: #00ff44;
+}
+
+.div-cart > .div-subtotal > div > h5{
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.div-cart > .div-subtotal > div > #order{
+  background-color: #00631a;
+  color: #FFF;
+  -webkit-transition: all 0.9s ease-in-out 0s;
+  transition: all 0.9s ease-in-out 0s;
+}
+
+.div-cart > .div-subtotal > div > #order:hover{
+  background-color: #00a02b;
+}
+
+/* tela carrinho */
+
+.div-cart > div > .title-order{
+  color: #008523;
+  font-size: 1.5em;
+}
+
+.div-cart > .div-order > .accordion > .order > h2 > .accordion-button:not(.collapsed) {
+  color: #00631a;
+  background-color: #eeffe9;
+  box-shadow: 0 0 0 .25rem rgba(13, 253, 13, 0.25);
+}
+
+.div-cart > .div-order > .accordion > .order > h2 > .accordion-button:focus {
+  z-index: 3;
+  border-color: #86fe90;
+  outline: 0;
+  box-shadow: 0 0 0 .25rem rgba(21, 253, 13, 0.25);
+}
+
+.div-cart > .div-order > .accordion > .order > h2 > .accordion-button::after {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  margin-left: 10px;
+  content: "";
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23212529'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: 1.25rem;
+  transition: transform .2s ease-in-out;}
+
+.div-cart > .div-order > .accordion > .order > h2 > .accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='green'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  transform: rotate(180deg);
+}
+
+.div-cart > .div-order > .accordion > .order > h2 > .accordion-button{
+  color: #000;
+}
+
+.div-cart > .div-order > .accordion > .order > h2 > .accordion-button > h1{
+  color: #008523;
+}
+
+.div-cart > .div-order > .accordion > .order > div > .card-body{
+  background: #00000005;
+}
+
+.div-cart > .div-order > .accordion > .order > div > .card-body ul {
+  padding: 0;
+}
+
+.div-cart > .div-order > .accordion > .order > div > .card-body > ol, ul, dl {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.div-cart > .div-order > .accordion > .order > div > .card-body ul li {
+  font-size: 16px;
+  font-weight: 400;
+  list-style: none;
+  margin-bottom: 15px;
+}
+
+.div-cart > .div-order > .accordion > .order > div > .card-body ul li span:first-child {
+  width: 60%;
+  color: #000;
+  font-size: 1.2em;
+}
+
+.div-cart > .div-order > .accordion > .order > div > .card-body ul li {
+  font-size: 16px;
+  font-weight: 400;
+  list-style: none;
+}
+
+.div-cart > .div-order > .accordion > .order > div > .card-body ul li span:nth-child(2) {
+  width: 30%;
+  color: rgb(97, 97, 97);
+}
+
+.div-cart > .div-order > .accordion > .order > div > .card-body ul li span:last-child {
+  width: 10%;
+  color: #28a745;
+}

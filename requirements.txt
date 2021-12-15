@@ -7,4 +7,5 @@ flask-mail
 Flask-Login
 email-validator
 dynaconf
+wtforms==2.3.3
 Pillow

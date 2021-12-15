@@ -7,7 +7,7 @@ from flask_admin import Admin, form
 from flask_admin.contrib.sqla import ModelView
 
 from SoftLife.ext.db import db
-from SoftLife.ext.db.models import Category, Items, Address, Checkout, Order
+from SoftLife.ext.db.models import Category, Items, Address, Checkout, Order, OrderItems
 
 file_path = op.join(op.dirname(__file__), '../static/img/products') # path
 try:
@@ -30,6 +30,8 @@ def init_app(app):
 
     admin.add_view(ModelView(Category, db.session))
 
+    admin.add_view(ModelView(OrderItems, db.session))
+    
     admin.add_view(ModelView(Order, db.session))
     
     admin.add_view(ModelView(Checkout, db.session))

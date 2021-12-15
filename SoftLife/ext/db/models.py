@@ -26,8 +26,8 @@ class Items(db.Model):
 
     category = db.relationship("Category", foreign_keys=category_id)
 
-'''    def __repr__(self):
-        return '<Items %r>' % (self.id)'''
+    def __repr__(self):
+        return self.name
 
 
 class Order(db.Model):
@@ -41,6 +41,8 @@ class Order(db.Model):
     user = db.relationship("User", foreign_keys=user_id)
     address = db.relationship("Address", foreign_keys=address_id)
 
+    def __repr__(self):
+        return str(self.id)
 
 class OrderItems(db.Model):
     __tablename__ = "order_items"
@@ -79,3 +81,6 @@ class Address(db.Model):
     user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
 
     user = db.relationship("User", foreign_keys=user_id)
+
+    def __repr__(self):
+        return self.address

@@ -1,20 +1,5 @@
 {% extends "base.html" %}
 {% block app_content %}
-<div class="row d-flex justify-content-end">
-    <hr>
-    <div class="procurar col-6 col-md-4 d-flex flex-grow-3 justify-content-evenly align-items-baseline">
-        <div>
-            <form>
-                <label class="form-label">
-                    <input type="search" class="form-control" placeholder="Procurar">
-                </label>
-                <a href="#"><i class="icon-prod fs-5 bi-search"></i></a>
-            </form>
-        </div>
-        <a href="#"><i class="icon-prod fs-4 bi bi-cart-fill"></i></a>
-    </div>
-    <hr>
-</div>
 <section class="section-feed">
     <div class="container container-feed">
         <div class="card-group"style="width: 73rem;">
@@ -25,8 +10,13 @@
                     <div class="card-body">
                         <h5 class="card-title"style="width: 13rem; height:55px">{{ product.name }}</h5>
                         <h5 class="card-price" style="width: 10rem; height: 30px">{{ product.price }}</h5>
-                        <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
+                        {% if current_user.is_anonymous %}
+                        <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"style="width: 13rem; height: 2.4rem"><i class="bi bi-eye"></i></a>
+                        {% else %}
+                        <a href="{{ url_for('Produtos.add_cart', id=product.id, user_id=current_user.id) }}" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
                         <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"style="width: 6rem; height: 2.4rem"><i class="bi bi-eye"></i></a>
+                        {% endif %}
+
                     </div>
                 </div>
                 {% endfor %}
