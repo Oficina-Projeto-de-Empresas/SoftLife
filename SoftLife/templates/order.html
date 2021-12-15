@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block app_content %}
+<hr>
+<section class="section-cart">
+    <div class="container container-feed">
+        <div class="col-12">
+            <div class="row g-0 div-cart">
+                <div class="d-flex justify-content-between align-items-center mb-3 div-title">
+                    <h1 class="fw-bold mb-0 title-cart">Pedidos</h1>
+                    <h6 class="mb-0 text-muted number-items">{{ orders|length }}</h6>
+                </div>
+                <hr class="my-4">
+                <div class="row mb-3 d-flex justify-content-center align-items-center div-order">
+                    <div class="accordion" id="myAccordion">
+                        {% for order in orders | reverse %}
+                        <div class="accordion-item mb-3 order">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button type="button" class="accordion-button collapsed d-flex" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse{{ order.id }}">#{{ orders.index(order)+1 }}<h1 class="card-price ms-auto">{{ subtotal[order.id] }}</h1></button>
+                            </h2>
+                            <div id="collapse{{ order.id }}" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
+                                <div class="card-body py-md-5 px-4">
+                                    <ul>
+                                        {% for order_item in order_items %}
+                                            {% if order_item.order_id == order.id %}
+                                                {% for product in products %}
+                                                    {% if order_item.items_id == product.id %}
+                                                    <li class="d-sm-flex">
+                                                        <span>{{ product.name }}</span>
+                                                        <span>{{ order_item.quant }} </span>
+                                                        <span class="card-price">{{ product.price * order_item.quant }}</span>
+                                                    </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<script>
+    var productsPrices = document.getElementsByClassName("card-price");
+    for (var produtPrice of productsPrices) {
+	    var num = parseFloat(produtPrice.innerHTML);
+	    produtPrice.innerHTML = num.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    }
+</script>
+{% endblock %}
