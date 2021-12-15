@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block app_content %}
+<hr>
+<section class="section-cart">
+    <div class="container container-feed">
+        <div class="col-12">
+            <div class="row g-0 div-cart">
+                <div class="d-flex justify-content-between align-items-center mb-3 div-title">
+                    <h1 class="fw-bold mb-0 title-cart">Carrinho</h1>
+                    <h6 class="mb-0 text-muted number-items">{{ prods_cart|length }} items</h6>
+                </div>
+                <hr class="my-4">
+                {% for prod_cart in prods_cart %}
+                    {% for product in products %}
+                        {% if product.id == prod_cart.items_id %}
+                        <div class="row mb-3 d-flex justify-content-between align-items-center items-cart">
+                            <div class="col-md-2 col-lg-2 col-xl-2">
+                                <img src="{{ url_for('static', filename='img/products/' + product.image) }}"
+                                    class="img-fluid rounded-3" alt="Cotton T-shirt">
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-3">
+                                <h6 class="text-muted">{{ product.name }}</h6>
+                                <h6 class="text-black mb-0">{{ product.description }}</h6>
+                            </div>
+                            <div class="col-md-3 col-lg-3 col-xl-2 d-flex div-input">
+                                <button class="btn px-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown(); test('{{ prod_cart.quant }}','{{ product.id }}','update',-1);">
+                                    <i class="fs-3 bi bi-dash"></i>
+                                </button>
+
+                                <input min="0" max="{{ product.quantity }}" name="quantity" value="{{ prod_cart.quant }}" type="number"
+                                    class="form-control form-cart form-control-sm" readonly/>
+
+                                <button class="btn px-2" id="plus" onclick="this.parentNode.querySelector('input[type=number]').stepUp(); test('{{ prod_cart.quant }}','{{ product.id }}','update',1);">
+                                    <i class="fs-3 bi bi-plus"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1 offset-lg-1">
+                                <h6 class="mb-0 card-price">{{ product.price * prod_cart.quant }}</h6>
+                            </div>
+                            <div class="col-md-1 col-lg-1 col-xl-1">
+                                <a class="mb-0 btn btn-success trash" href="{{ url_for('usuario.delete', user_id=current_user.id, prod_id=prod_cart.items_id) }}"><i class="bi bi-trash"></i></a>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                <hr class="my-4">
+
+                <div class="row mb-4 d-flex justify-content-between align-items-center div-subtotal">
+                    <div class="col-md-3 col-lg-3 col-xl-3">
+                        <a href="{{ url_for('Produtos.products') }}"><i class="bi bi-arrow-left"></i>Continuar
+                            comprando</a>
+                    </div>
+                    <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+                        <h5 class="mb-0">Subtotal</h5>
+                        <h5 class="mb-0 card-price">{{ subtotal }}</h5>
+
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a href="{{ url_for('usuario.add_order', user_id=current_user.id, order_id=1) }}"  class="btn active me-5" id="order" type="button">
+                            Fazer pedido</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    var productsPrices = document.getElementsByClassName("card-price");
+    for (var produtPrice of productsPrices) {
+        var num = parseFloat(produtPrice.innerHTML);
+        produtPrice.innerHTML = num.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+    }
+    /*
+    var list_prod = []
+    function test(quant,id_prod,id_element,increment) {
+        if (list_prod.length === 0){
+            const data = { id_prod: id_prod,quant_original: quant, quant_increment: parseInt(quant)+parseInt(increment), quant_igual: false };
+            list_prod.push(data)
+            document.getElementById(id_element).style.display = 'inline-block'
+        }
+        else{
+            var prod = list_prod.find(function(list_prod){
+                return list_prod.id_prod == id_prod
+            })
+            var index = list_prod.indexOf(prod);
+            if (prod === undefined){
+                const data = { id_prod: id_prod,quant_original: quant, quant_increment: parseInt(quant)+parseInt(increment), quant_igual: false};
+                list_prod.push(data)
+            }
+            else{
+                const data = { id_prod: id_prod,quant_original: quant, quant_increment: prod.quant_increment+parseInt(increment), quant_igual: false};
+                list_prod[index] = data
+            }
+            list_prod.forEach(function(prod, index) {
+                if (prod.quant_original == prod.quant_increment){
+                    const data = { id_prod: id_prod,quant_original: quant, quant_increment: prod.quant_increment+parseInt(increment), quant_igual: true};
+                    list_prod[index] = data
+                    console.log(prod.id_prod +" "+prod.quant_igual)
+                }
+                else {
+                    const data = { id_prod: id_prod,quant_original: quant, quant_increment: prod.quant_increment+parseInt(increment), quant_igual: false};
+                    list_prod[index] = data
+                    console.log("entrou false")
+                }
+            });
+            var resp = list_prod.find(function(list_prod){
+                return list_prod.quant_igual == false})
+            if (resp == undefined){
+                console.log("todos sao iguais")
+                document.getElementById(id_element).style.display = 'none'
+            }else{document.getElementById(id_element).style.display = 'inline-block'}
+        }
+
+    }*/
+</script>
+
+{% endblock %}
