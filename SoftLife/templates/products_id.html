@@ -1,94 +1,36 @@
 {% extends "base.html" %}
 {% block app_content %}
-<div class="row d-flex justify-content-end">
-    <hr>
-    <div class="procurar col-6 col-md-4 d-flex flex-grow-3 justify-content-evenly align-items-baseline">
-        <div>
-            <form>
-                <label class="form-label">
-                    <input type="search" class="form-control" placeholder="Procurar">
-                </label>
-                <a href="#"><i class="icon-prod fs-5 bi-search"></i></a>
-            </form>
-        </div>
-        <a href="#"><i class="icon-prod fs-4 bi bi-cart-fill"></i></a>
-    </div>
-    <hr>
-</div>
-
 <section class="section-feed">
-    <div class="container container-feed py-4">
-        <div class="card" style="width: 72.5rem; height:auto; right:auto;">
+    <div class="container container-feed py-4 d-flex justify-content-center">
+        <div class="card " style="width: 52.5rem; height:auto; right:auto;">
             <div class="row g-1">
-                <div class="col-md-4"style="width:35rem; height:35rem;">
-                    <img src="{{ url_for('static', filename='img/products/' + product.image) }}" class="card-img-top w-20 h-20 py-10">
+                <div class="col-md-4" style="width:25rem; height:25rem;">
+                    <img src="{{ url_for('static', filename='img/products/' + product.image) }}"
+                        class="card-img-top w-20 h-20 py-10">
                 </div>
-                <div class="card-body col-md-4" >
-                    <h5 class="card-title" style="width: auto; height:3rem">{{ product.name }}</h5>
-                    <p class="card-text" style="width: auto; height: 3rem">{{ product.description }}</p>
-                    <h5 class="card-price" style="width: 13rem; height: 3rem">{{ product.price }}</h5>
-                    <h1 class="card-text" style="width: 13rem; height: 1.5rem">Calcular frete e prazo</h1>
-                    <input type="text" style="width: 9.5rem; height: 2.3rem ; left: 55px ;text-align: center;" class="card-text" Placeholder="00000-000"><a href="#Buscarfrete" class="btn btn-primary" style="width: 3.5rem; height: 2.4rem; left: 55rem; ">OK</a></p>
-                    <p class="card-text"><a href="#AdicionarCarrinho" class="btn btn-primary" style="width: 9.5rem; height: 2.4rem"><i
-                    class="bi bi-cart-plus"></i></a></p>
-                    <p class="card-text"><a href="#Finalizarcompra" class="btn btn-primary" style="width: 9.5rem; height: 2.4rem; left: 2.5rem; ">Finalizar compra</a></p>
+                <div class="card-body col-md-4">
+                    <div class="row gy-5 d-flex justify-content-end ">
+                                <h5 class="card-title text-end me-3" style="font-size: 2em; font-weight: 700; color:#008523 ;">{{ product.name }}
+                                </h5>
+                                <p class="card-text text-end me-3" style="font-size: 1.5em;">{{
+                                    product.description }}</p>
+                                <h5 class="card-price text-end me-4" style="font-size: 2em; font-weight: 700;">{{ product.price
+                                    }}</h5>
+                                <a href="{{ url_for('Produtos.add_cart', id=product.id, user_id=current_user.id) }}" style="width: 15em;"
+                                    class="btn btn-success cart-button"><i class="bi fs-4 bi-cart-plus"></i></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>          
-        
-        <div class="row row-sugestoes">
-            <h1 id="sugestoes"> Sugestões de compras: </h1>
-        </div>
-        <div class="card-group"style="width: 73rem">
-            <div class="row row-cols-2 row-cols-md-2 g-2">
-                <div class="card align-items-center" style="width: 14.5rem; height: 21.5rem;">
-                    <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"style="width: 13rem; height:30px">Shake Herbalife</h5>
-                        <h5 class="card-price"style="width: 10rem; height:30px">R$ 40,00</h5>
-                        <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                            <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"style="width: 6rem; height: 2.4rem"><i class="bi bi-eye"></i></a>
-                    </div>
-                </div>
-                <div class="card align-items-center" style="width: 14.5rem; height: 21.5rem;">
-                    <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"style="width: 13rem; height:30px">Shake Herbalife</h5>
-                        <h5 class="card-price"style="width: 10rem; height:30px">R$ 40,00</h5>
-                        <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                            <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"style="width: 6rem; height: 2.4rem"><i class="bi bi-eye"></i></a>
-                    </div>
-                </div>
-                <div class="card align-items-center" style="width: 14.5rem; height: 21.5rem;">
-                    <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"style="width: 13rem; height:30px">Shake Herbalife</h5>
-                        <h5 class="card-price"style="width: 10rem; height:30px">R$ 40,00</h5>
-                        <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                            <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"style="width: 6rem; height: 2.4rem"><i class="bi bi-eye"></i></a>
-                    </div>
-                </div>
-                <div class="card align-items-center" style="width: 14.5rem; height: 21.5rem;">
-                    <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"style="width: 13rem; height:30px">Shake Herbalife</h5>
-                        <h5 class="card-price"style="width: 10rem; height:30px">R$ 40,00</h5>
-                        <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                            <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"style="width: 6rem; height: 2.4rem"><i class="bi bi-eye"></i></a>
-                    </div>
-                </div>
-                <div class="card align-items-center" style="width: 14.5rem; height: 21.5rem;">
-                    <img src="../static/img/prod1.png" class="card-img-top w-50 h-40 py-3" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title"style="width: 13rem; height:30px">Shake Herbalife</h5>
-                        <h5 class="card-price"style="width: 10rem; height:30px">R$ 40,00</h5>
-                        <a href="#AdicionarCarrinho" class="btn btn-success cart-button"><i class="bi bi-cart-plus"></i></a>
-                            <a href="{{ url_for('Produtos.products_id', id=product.id) }}" class="btn btn-primary"style="width: 6rem; height: 2.4rem"><i class="bi bi-eye"></i></a>
-                    </div>
-                </div>
-            </div>    
         </div>
     </div>
 </section>
-
+<script>
+    var productsPrices = document.getElementsByClassName("card-price");
+    for (var produtPrice of productsPrices) {
+        var num = parseFloat(produtPrice.innerHTML);
+        produtPrice.innerHTML = num.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+    }
+</script>
 {% endblock %}
